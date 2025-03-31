@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MediQuickFinal.Models.AdminViewModel.MediViewModel>
+
+@{
+    ViewBag.Title = "Manage Medicine";
+}
+
+<div class="form-container">
+    
+        @if (Model != null && Model.Any())
+        {
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Product Category</th>
+                        <th>Product Type</th>
+                        <th>Product Manager Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var medi in Model)
+                    {
+                        <tr>
+                            <td>@medi.MediName</td>
+                            <td>@medi.MediPrice</td>
+                            <td>@Enum.GetName(medi.MediCategory)</td>
+                            <td>@Enum.GetName(medi.MediType)</td>
+                            <td>@medi.MediManagerEmail</td>
+                            <td>
+                                <a asp-controller="Admin" asp-action="EditMedi" asp-route-mediId="@medi.MediId" class="btn btn-custom">Edit</a>
+                                <a asp-controller="Admin" asp-action="DeleteMedi" asp-route-mediId="@medi.MediId" class="btn btn-custom">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h3>No Medicines found</h3>
+        }
+        <div class="btnTop">
+            <a asp-action="CreateMedi" asp-controller="Admin" class="btn btn-success mb-3 btn-custom">Add new Product</a>
+        </div>
+  
+</div>

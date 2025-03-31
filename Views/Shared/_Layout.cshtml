@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MediQuick</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MediQuickFinal.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="~/images/favicon.ico">
+</head>
+<body>
+   
+    <header class="p-3 text-bg-dark Mediheader">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><i class="bi bi-clipboard2-pulse-fill"></i></svg>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                  
+                    <li><a class="nav-link px-2 text-white mediquick">MediQuick</a></li>
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a class="nav-link px-2 text-white" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li>
+                            @if (User.IsInRole("Guest"))
+                            {
+                                <a asp-controller="Medicines" asp-action="Index" class="nav-link text-white">Medicines</a>
+                            }
+                        </li>
+                       
+                        <li>
+                            @if (User.IsInRole("SuperAdmin"))
+                            {
+                                <a asp-controller="Admin" asp-action="Index" class="nav-link text-white">Admin Portal</a>
+                            }
+                        </li>
+                        <li>
+                            @if (User.IsInRole("Guest"))
+                            {
+                                <a asp-controller="Cart" asp-action="Index" class="nav-link text-white">Cart</a>
+                            }
+                        </li>
+                        <li><a class="nav-link px-2 text-white" asp-controller="Membership" asp-action="Index">Membership</a></li>
+                       
+                    </ul>
+
+
+                </ul>
+
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                    <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+                </form>
+                @if (User != null && User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                        <p class="text-white mb-0 me-3">  Welcome @User.Identity.Name  </p>
+                    <div class="text-end">
+                        <a asp-area="" asp-controller="Account" asp-action="Logout" class="btn btn-outline-light me-2">Logout</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-end">
+                        <a asp-area="" asp-controller="Account" asp-action="Login" class="btn btn-outline-light me-2">Login</a>
+                        <a asp-area="" asp-controller="Account" asp-action="Register" class="btn btn-outline-light me-2">Sign-up</a>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @* <footer class=" footer text-muted text-center text-bg-white"> *@
+    @*     <div class="footer-container"> *@
+    @*         <div class="container"> *@
+    @*             <p>&copy; 2025 MediQuick. All rights reserved.</p> *@
+    @*         </div> *@
+    @*     </div> *@
+    @* </footer> *@
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+

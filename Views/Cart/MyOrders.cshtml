@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MediQuickFinal.Models.Order>
+
+<div class="container mt-5">
+    <h1>My Orders</h1>
+
+    @if (Model.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Order Date</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Items</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.OrderDate</td>
+                        <td>@order.TotalPrice</td>
+                        <td>
+                            <ul>
+                                @foreach (var item in order.OrderItems)
+                                {
+                                    <li>@item.Name - @item.Quantity x @item.Price</li>
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>You have no orders.</p>
+    }
+</div>
+

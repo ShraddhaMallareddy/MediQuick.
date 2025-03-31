@@ -1,0 +1,53 @@
+﻿@model MediQuickFinal.Models.AdminViewModel.MediViewModel
+
+<div class="Medi-form-container">
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <form class="form" asp-action="EditMedi" asp-controller="Admin" method="post" enctype="multipart/form-data">
+        
+        <input type="hidden" asp-for="MediId" asp-route-id="MediId"/>
+        <div class="form-group">
+            <label for="MediName">Product Name</label>
+            <input type="text" class="form-control" id="MediName" name="MediName" value="@Model.MediName" />
+            <span asp-validation-for="MediName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="MediPrice">Product Price</label>
+            <input type="text" class="form-control" id="MediPrice" name="MediPrice" value="@Model.MediPrice" />
+            <span asp-validation-for="MediPrice" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="MediManagerEmail">Product Manager Email</label>
+            <input type="text" class="form-control" id="MediManagerEmail" name="MediManagerEmail" value="@Model.MediManagerEmail" />
+            <span asp-validation-for="MediManagerEmail" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="MediType">Product Type</label>
+            @Html.DropDownListFor(x => x.MediType, Model.MediTypes, "Select a Type", new { @id = "MediType", @class = "form-control" })
+            <span asp-validation-for="MediType" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="MediCategory">Product Category</label>
+            @Html.DropDownListFor(x => x.MediCategory, Model.MediCategories, "Select a Category", new { @id = "MediCategory", @class = "form-control" })
+            <span asp-validation-for="MediCategory" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            <label for="MediDescription">Product Description</label>
+            <input type="text" class="form-control" id="MediDescription" name="MediDescription" value="@Model.MediDescription" />
+            <span asp-validation-for="MediDescription" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="MediBackground">Product Image</label>
+            <input type="file" class="form-control" id="MediBackground" name="MediBackground" value="@Model.MediBackground" />
+            <span asp-validation-for="MediBackground" class="text-danger"></span>
+        </div>
+        <div class="btnTop">
+            <a class="btn btn-custom" asp-controller="Admin" asp-action="ManageMedi">Back</a>
+            <button type="submit" class="btn btn-custom">Save</button>
+        </div>
+    </form>
+</div>
+
+
+

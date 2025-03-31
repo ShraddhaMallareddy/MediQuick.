@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+
+<div class="container text-center my-5">
+    <h1 class="display-4">Welcome to MediQuick</h1>
+    <p class="lead">Your one-stop solution for all your medical needs.</p>
+    <img src="~/Images/HomePage.jpg" class="img-fluid rounded" alt="Center Image">
+</div>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="~/Images/Cost-And-Features-For-Developing-a-Medicine-Delivery-App-Like-1MG.jpg" class="card-img-top" alt="Feature 1">
+                <div class="card-body">
+                    <h5 class="card-title">Fast Delivery</h5>
+                    <p class="card-text">Get your medicines delivered to your doorstep within hours.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="~/Images/online-medicine-pharmacy.jpg" class="card-img-top" alt="Feature 2">
+                <div class="card-body">
+                    <h5 class="card-title">Wide Range of Products</h5>
+                    <p class="card-text">Choose from a wide range of medicines and healthcare products.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="~/Images/home-banner.jpg" class="card-img-top" alt="Feature 3">
+                <div class="card-body">
+                    <h5 class="card-title">Expert Advice</h5>
+                    <p class="card-text">Get expert advice from our team of healthcare professionals.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center my-5">
+    <h2 class="display-5">Join Our Membership Program</h2>
+    <p class="lead">Enjoy exclusive benefits and discounts with our membership plans.</p>
+    <a href="/Membership/Index" class="btn btn-primary btn-lg">Learn More</a>
+</div>
+
+<div class="container my-5">
+    <h2 class="text-center">What Our Customers Say</h2>
+    <div id="carouselTestimonials" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="d-flex justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">"MediQuick has been a lifesaver! Fast delivery and great customer service."</p>
+                                <footer class="blockquote-footer">John Doe</footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-flex justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">"Wide range of products and very reliable. Highly recommend!"</p>
+                                <footer class="blockquote-footer">Jane Smith</footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselTestimonials" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselTestimonials" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 MediQuick. All rights reserved.</p>
+</footer>
+

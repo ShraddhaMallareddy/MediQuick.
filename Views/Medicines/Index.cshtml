@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MediQuickFinal.Models.MedicinesViewModel.MedicineViewModel>
+
+<div class="container px-4 py-5" id="custom-cards">
+    <h2 class="pb-2 border-bottom">Products</h2>
+    <form method="get" asp-action="Index" asp-controller="Medicines">
+        <div class="mb-3">
+            <label for="filterType" class="form-label">Filter by Type:</label>
+            <select id="filterType" name="filterType" class="form-select">
+                <option value="">All</option>
+                @foreach (var type in Model.Select(m => m.MediType).Distinct())
+                {
+                    <option value="@type">@type</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="filterCategory" class="form-label">Filter by Category:</label>
+            <select id="filterCategory" name="filterCategory" class="form-select">
+                <option value="">All</option>
+                @foreach (var category in Model.Select(m => m.MediCategory).Distinct())
+                {
+                    <option value="@category">@category</option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var medi in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <img src="data:image;base64,@Convert.ToBase64String(medi?.MediBackground ?? new byte[0])" class="card-img-top" alt="@medi.MediName">
+                    <div class="card-body">
+                        <h5 class="card-title">@medi.MediName</h5>
+                        <p class="card-text">@medi.MediDescription</p>
+                        <p class="card-text"><strong>Price: Rs @medi.MediPrice</strong></p>
+                        <p class="card-text">Type: @medi.MediType</p>
+                        <p class="card-text">Category: @medi.MediCategory</p>
+                        <form asp-action="AddToCart" asp-controller="Cart" method="post">
+                            <input type="hidden" name="id" value="@medi.MediId" />
+                            <div class="form-group">
+                                <label for="quantity">Quantity</label>
+                                <input type="number" name="quantity" value="1" min="1" class="form-control" />
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
